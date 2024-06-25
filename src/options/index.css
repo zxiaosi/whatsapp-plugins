@@ -1,0 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.btn {
+  width: 200px;
+  height: 32px;
+  margin: 20px auto;
+  padding: 4px 15px;
+  background-color: #1677ff;
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.btn:hover {
+  background-color: #4096ff;
+}

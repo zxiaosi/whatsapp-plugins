@@ -1,0 +1,55 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-size: 14px;
+  user-select: none;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.title {
+  padding: 5px 15px;
+  font-weight: bolder;
+  cursor: default;
+  text-align: center;
+  font-size: 12px;
+  border-bottom: 1px dotted #aaa;
+}
+
+.content {
+  padding: 5px 15px;
+}
+
+.content > div {
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.content > div:hover {
+  color: red;
+  background-color: #f1f1f1;
+}
+
+.footer {
+  font-size: 12px;
+  padding: 5px 15px;
+  line-height: 20px;
+  border-top: 1px dotted #aaa;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer > div {
+  cursor: pointer;
+}
+
+.footer > div:hover {
+  color: #888;
+}

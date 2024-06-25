@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "whatsapp-plugins",
+  "version": "1.0.0",
+  "description": "whatsapp-plugins",
+  "permissions": ["contextMenus", "scripting", "activeTab", "notifications", "tabs", "storage", "declarativeContent", "declarativeNetRequest", "declarativeNetRequestFeedback"],
+  "icons": {
+    "16": "public/images/logo16.png",
+    "48": "public/images/logo48.png",
+    "128": "public/images/logo128.png"
+  },
+  "action": {
+    "default_title": "点我有惊喜"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "js": ["src/content/index.tsx", "src/content/loginModal/index.tsx", "src/content/loginModal/index.tsx", "src/content/navbar/index.tsx", "src/content/sidebar/index.tsx"],
+      "matches": ["https://web.whatsapp.com/*"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.ts"
+  },
+  "options_page": "src/options/index.html",
+  "options_ui": {
+    "page": "src/options/index.html",
+    "open_in_tab": false
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/assets/images/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "host_permissions": ["https://*.erpsh.top/*", "https://*.whatsapp.com/*"]
+}
