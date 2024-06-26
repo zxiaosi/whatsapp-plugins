@@ -20,6 +20,37 @@
 
   3. 点击 `加载已解压的扩展程序`，选择项目中的 `dist` 目录
 
+## 项目说明
+
+  + [CRXJS](https://crxjs.dev/vite-plugin)
+
+  + [谷歌插件文档](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world?hl=zh-cn)
+
+```sh
+  ⊢ dist                          # 打包后的文件 [插件文件]
+  ⊢ public                        # 静态资源文件
+    ⨽ images                      # 图片资源
+    ⨽ manifest.json               # 插件配置文件 [重要]
+    ⨽ inject.js                   # 注入脚本 [inject-script.js]
+  ⊢ src                           # 源码文件
+    ⨽ apis                        # 接口请求
+    ⨽ background                  # 后台脚本 [background-script.js]
+      ⨽ init.ts                   # 后台脚本入口
+      ⨽ menus.ts                  # 右键菜单项
+      ⨽ notifications             # 通知管理
+      ⨽ service-worker.ts         # 后台脚本入口
+    ⨽ content                     # 内容脚本 [content-script.js]
+      ⨽ loginModal                # 登录Modal弹窗
+      ⨽ navbar                    # 导航栏
+      ⨽ sidebar                   # 通知管理
+      ⨽ index.ts                  # 后台脚本入口
+    ⨽ options                     # 配置页面 
+    ⨽ request                     # 请求封装
+    ⨽ utils                       # 工具函数
+    ⨽ App.tsx                     # popup页面
+    ⨽ global.ts                   # 全局变量
+```
+
 ## 参考文献
 
   + [入门](https://juejin.cn/post/7035782439590952968)

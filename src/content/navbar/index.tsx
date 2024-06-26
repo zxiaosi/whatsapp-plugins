@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import zhCN from "antd/locale/zh_CN";
 import "dayjs/locale/zh-cn";
 import React, { useEffect, useRef, useState } from "react";
-import { Button, ConfigProvider, Image, InputNumber, Space, message } from "antd";
+import { Button, ConfigProvider, Image, InputNumber, message } from "antd";
 import styles from "./index.module.less";
 import { createPortal } from "react-dom";
 import { parentElLoc } from "../../global";
