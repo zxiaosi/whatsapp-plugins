@@ -238,10 +238,7 @@ export const SideBar: React.FC = () => {
                           if (!value) return Promise.resolve();
 
                           // 发送请求判断邮箱是否存在
-                          const resp = await chrome.runtime.sendMessage({
-                            action: "checkEmail",
-                            values: { email: value, contacts_id: customerInfo?.contacts?.[0]?.id },
-                          });
+                          const resp = await chrome.runtime.sendMessage({ action: "checkEmail", values: { email: value } });
 
                           if (resp?.email) return Promise.resolve();
                           return Promise.reject(resp);

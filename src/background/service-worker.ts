@@ -104,7 +104,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse: any) => {
 
 /** 登录事件 */
 const handleSubmitLogin = async (values: any) => {
-  const { token_type, access_token } = await userLoginApi(values);
+  // const { token_type, access_token } = await userLoginApi(values);
+  // if (!token_type || !access_token) return;
+  // await chrome.storage.sync.set({ token: `${token_type} ${access_token}` }); // 保存token
+  // return await handleGetUserInfo();
+
+  const token_type = "Bearer";
+  const access_token = "1234567890";
   if (!token_type || !access_token) return;
   await chrome.storage.sync.set({ token: `${token_type} ${access_token}` }); // 保存token
   return await handleGetUserInfo();
@@ -112,21 +118,39 @@ const handleSubmitLogin = async (values: any) => {
 
 /** 获取用户信息 */
 const handleGetUserInfo = async () => {
-  const resp = await getUserInfoApi();
-  delete resp.permission.menus; // 删除了用户的权限信息, 以减少存储的数据量
+  // const resp = await getUserInfoApi();
+  // delete resp.permission.menus; // 删除了用户的权限信息, 以减少存储的数据量
+  // chrome.storage.sync.set({ userInfo: resp });
+  // return resp;
+
+  const resp = { id: 1, name: "zxiaosi", email: "123456789@qq.com" };
   chrome.storage.sync.set({ userInfo: resp });
   return resp;
 };
 
 /** 根据手机号获取客户信息 */
 const handleGetCustomerInfo = async (phone: string) => {
-  const enums = await getChoicesEnumApi();
-  const sources = await getCustomerSourcesApi();
-  const countries = await getChoicesCountriesApi();
-  const customerSources = sources?.items?.map((_: any) => ({ ..._, value: _.id, label: _.alias || _.name }));
-  const choicesCountrie = buildHierarchy(countries.items, "name", "id", false);
-  const customerInfo = await getCustomerInfoApi(phone);
-  return { customerInfo, choicesEnum: enums.items, choicesCountrie, customerSources };
+  // const enums = await getChoicesEnumApi();
+  // const sources = await getCustomerSourcesApi();
+  // const countries = await getChoicesCountriesApi();
+  // const customerSources = sources?.items?.map((_: any) => ({ ..._, value: _.id, label: _.alias || _.name }));
+  // const choicesCountrie = buildHierarchy(countries.items, "name", "id", false);
+  // const customerInfo = await getCustomerInfoApi(phone);
+  // return { customerInfo, choicesEnum: enums.items, choicesCountrie, customerSources };
+
+  const customerInfo = {
+    ad_account: "nbt_admin",
+    department_id: 1,
+    department_name: "ERP 管理平台",
+    email: "root@erpsh.top",
+    id: 1,
+    is_leader: false,
+    is_super_admin: true,
+    mobile: "86021",
+    name: "超级管理员",
+    username: "nbt_admin",
+  };
+  return { customerInfo, choicesEnum: [], choicesCountrie: [], customerSources: [] };
 };
 
 /** 保存客户信息 */
@@ -143,27 +167,42 @@ const handleSaveCustomerInfo = async (values: any) => {
 
 /** 同步聊天记录 */
 const handleSyncChatHistory = async (result: SyncChatHistoryApi) => {
+  // const { whatsApp_phone, chat_record, isForce } = result;
+
+  // let chatRecord = [] as any[];
+
+  // if (!isForce) {
+  //   // 获取最新的聊天记录
+  //   const lastest = await getLastChatHistoryApi(whatsApp_phone);
+
+  //   // 过滤出新的聊天记录
+  //   chatRecord = chat_record?.filter((item) => item.sign > (lastest?.sign || "0"));
+  // } else {
+  //   chatRecord = chat_record;
+  // }
+
+  // if (chatRecord?.length === 0) return "没有新的聊天记录！";
+  // return await syncChatHistoryApi({ whatsApp_phone, chat_record: chatRecord });
+
   const { whatsApp_phone, chat_record, isForce } = result;
 
   let chatRecord = [] as any[];
 
   if (!isForce) {
-    // 获取最新的聊天记录
-    const lastest = await getLastChatHistoryApi(whatsApp_phone);
-
     // 过滤出新的聊天记录
-    chatRecord = chat_record?.filter((item) => item.sign > (lastest?.sign || "0"));
+    chatRecord = chat_record?.filter((item) => item.sign > "0");
   } else {
     chatRecord = chat_record;
   }
 
   if (chatRecord?.length === 0) return "没有新的聊天记录！";
-  return await syncChatHistoryApi({ whatsApp_phone, chat_record: chatRecord });
+  return { code: 200 };
 };
 
 /** 校验邮箱是否存在 */
 const handleCheckEmail = async (values: any) => {
-  return await checkEmailApi(values);
+  // return await checkEmailApi(values);
+  return { email: "123456789@qq.com" };
 };
 
 /** 向 content 中发消息 */

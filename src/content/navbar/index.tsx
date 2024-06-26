@@ -94,7 +94,7 @@ export const NavBar: React.FC = () => {
       <div className={styles.left}>
         <Image className={styles.leftLogo} src={logoImg} preview={false} />
 
-        <div className={styles.leftTitle}>Nbt ERP</div>
+        <div className={styles.leftTitle}>zxiaosi</div>
 
         <div className={styles.strangerChat}>
           <InputNumber variant="filled" addonBefore="+" controls={false} placeholder="请输入带区号的手机号进行聊天" onPressEnter={handleStrangerChat} />

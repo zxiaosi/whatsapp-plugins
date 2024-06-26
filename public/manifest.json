@@ -37,9 +37,9 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["src/assets/images/*"],
+      "resources": ["public/json/*"],
       "matches": ["<all_urls>"]
     }
   ],
-  "host_permissions": ["https://*.erpsh.top/*", "https://*.whatsapp.com/*"]
+  "host_permissions": ["http://localhost:5173/*", "https://*.whatsapp.com/*"]
 }

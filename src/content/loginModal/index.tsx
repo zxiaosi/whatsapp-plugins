@@ -65,7 +65,7 @@ export const LoginModal: React.FC = () => {
         title={
           <div className={styles.header}>
             <Image className={styles.image} src={logoImg} width={40} preview={false} />
-            <div className={styles.title}>Nbt ERP</div>
+            <div className={styles.title}>zxiaosi</div>
           </div>
         }
         width={300}
@@ -76,11 +76,11 @@ export const LoginModal: React.FC = () => {
         maskClosable={false}
         afterOpenChange={handleAfterOpenChange}>
         <Form ref={formRef}>
-          <Form.Item name="username" rules={[{ required: true, message: "请输入用户帐号!" }]}>
+          <Form.Item name="username" rules={[{ required: true, message: "请输入用户帐号!" }]} initialValue={"admin"}>
             <Input placeholder="请输入用户帐号" />
           </Form.Item>
 
-          <Form.Item name="password" rules={[{ required: true, message: "请输入密码!" }]}>
+          <Form.Item name="password" rules={[{ required: true, message: "请输入密码!" }]} initialValue={"123456"}>
             <Input.Password placeholder="请输入密码" />
           </Form.Item>
 
